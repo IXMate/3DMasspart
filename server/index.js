@@ -8,7 +8,7 @@ import dalleRoutes from "./routes/dalle.routes.js";
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
 app.use(express.json({ limit: "50mb" }));
 
 console.log("ENV CHECK:", process.env.OPENAI_API_KEY?.slice(0, 8));
