@@ -24,8 +24,12 @@ const Shirt = () => {
     return null;
   }
 
-  const logoTexture = useTexture(snap.logoDecal);
+
   const fullTexture = useTexture(snap.fullDecal);
+  let aspectRatio = 1;
+  if (fullTexture.image) {
+    aspectRatio = fullTexture.image.naturalWidth / fullTexture.image.naturalHeight;
+  }
 
   // 🔑 convert hex → THREE.Color ONCE
   const targetColor = new THREE.Color(snap.color);
@@ -45,29 +49,21 @@ const Shirt = () => {
         material-roughness={0.3}
         material-metalness={0.8}
         dispose={null}
-        position={[0, .445, 0]}
+        position={[0, .0, 0]}
         scale={0.2}
-        rotation={[99, 0, -60]}
+        rotation={[-Math.PI / 2, 0, 0]}
       >
         {snap.isFullTexture && fullTexture && (
           <Decal
-            position={[0, 0.5, 0.1]}
+            position={[0, -0.5, 3]}
             rotation={[0, 0, 0]}
-            scale={1}
+            scale={[2 * aspectRatio, 2, 1]}
             map={fullTexture}
           />
         )}
+  
 
-        {snap.isLogoTexture && logoTexture && (
-          <Decal
-            position={[0, 0, -0.1]}
-            rotation={[0, 0, 0]}
-            scale={0.25}
-            map={logoTexture}
-            depthTest={true}
-            depthWrite
-          />
-        )}
+
       </mesh>
     </group>
   );

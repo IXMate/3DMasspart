@@ -22,10 +22,7 @@ const Customizer = () => {
   const [generatingImg, setGeneratingImg] = useState(false);
   const [activeEditorTab, setActiveEditorTab] = useState("");
 
-  const [activeFilterTab, setActiveFilterTab] = useState({
-    logoShirt: true,
-    stylishShirt: false,
-  });
+
 
   // -----------------------------
   // TAB CONTENT
@@ -106,25 +103,13 @@ const Customizer = () => {
 
     state[decalType.stateProperty] = result;
 
-    if (!activeFilterTab[decalType.filterTab]) {
-      handleActiveFilterTab(decalType.filterTab);
+    if (type === 'logo') {
+        state.isLogoTexture = true;
+        state.isFullTexture = false;
+    } else if (type === 'full') {
+        state.isLogoTexture = false;
+        state.isFullTexture = true;
     }
-  };
-
-  // -----------------------------
-  // FILTER TABS
-  // -----------------------------
-  const handleActiveFilterTab = (tabName) => {
-    if (tabName === "logoShirt") {
-      state.isLogoTexture = !activeFilterTab[tabName];
-    } else if (tabName === "stylishShirt") {
-      state.isFullTexture = !activeFilterTab[tabName];
-    }
-
-    setActiveFilterTab((prev) => ({
-      ...prev,
-      [tabName]: !prev[tabName],
-    }));
   };
 
   // -----------------------------
@@ -186,22 +171,6 @@ const Customizer = () => {
               handleClick={() => (state.intro = true)}
               customStyles="w-fit px-4 py-2.5 font-bold text-sm"
             />
-          </motion.div>
-
-          {/* FILTER TABS */}
-          <motion.div
-            className="filtertabs-container"
-            {...slideAnimation("up")}
-          >
-            {FilterTabs.map((tab) => (
-              <Tab
-                key={tab.name}
-                tab={tab}
-                isFilterTab
-                isActiveTab={activeFilterTab[tab.name]}
-                handleClick={() => handleActiveFilterTab(tab.name)}
-              />
-            ))}
           </motion.div>
         </>
       )}
