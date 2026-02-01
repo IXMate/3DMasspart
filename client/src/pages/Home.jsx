@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <AnimatePresence>
       {snap.intro && (
-        <motion.section className="home" {...slideAnimation('left')}>
+        <motion.section className="home h-full" {...slideAnimation('left')}>
           <motion.header {...slideAnimation("down")}>
             <img 
               src='./masspart.png'
@@ -25,15 +25,15 @@ const Home = () => {
             />
           </motion.header>
 
-          <motion.div className="home-content" {...headContainerAnimation}>
+          <motion.div className="home-content justify-end sm:justify-start" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-              <h1 className="max-w-xs head-text">
+              <h1 className="head-text">
                 CREATE<br className="xl:block hidden" /> YOURS.
               </h1>
             </motion.div>
             <motion.div
               {...headContentAnimation}
-              className="flex flex-col gap-5 mt-16 sm:mt-0"
+              className="flex flex-col gap-5 mt-[40vh] sm:mt-0"
             >
               <p className="max-w-xs font-normal text-gray-600 text-sm sm:text-base">
               Create your unique and exclusive packaging with our brand-new 3D customization tool. <strong>Unleash your imagination</strong>{" "} and define your own style.
