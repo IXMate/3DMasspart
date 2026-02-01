@@ -27,15 +27,15 @@ const Home = () => {
 
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-              <h1 className="max-w-xs head-text mb-60">
+              <h1 className="max-w-xs head-text">
                 CREATE<br className="xl:block hidden" /> YOURS.
               </h1>
             </motion.div>
             <motion.div
               {...headContentAnimation}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-5 mt-16 sm:mt-0"
             >
-              <p className="max-w-md font-normal text-gray-600 text-base mt-60">
+              <p className="max-w-xs font-normal text-gray-600 text-sm sm:text-base">
               Create your unique and exclusive packaging with our brand-new 3D customization tool. <strong>Unleash your imagination</strong>{" "} and define your own style.
               </p>
 
