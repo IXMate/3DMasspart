@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
-
+import OrdersTable from "../components/OrdersTable";
 import state from '../store';
 import { CustomButton } from '../components';
 import {
